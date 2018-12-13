@@ -13,6 +13,9 @@ feat_dict = cnn_extract.extract(XY,50,6,peek=False)
 #Now feat_dict contains 4 feature arrays of your dataset
 #lets check the features right before the dense layer of the cnn
 print(feat_dict['features'])
+
+TRY ONLINE:
+https://colab.research.google.com/drive/11l3FexlmkXhYf5cVWj8A2CEnlCqtwEev
 """
 
 from __future__ import absolute_import
