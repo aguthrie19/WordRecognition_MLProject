@@ -1,4 +1,4 @@
-'''
+"""
 USE:
 
 import numpy as np
@@ -13,7 +13,7 @@ feat_dict = cnn_extract.extract(XY,50,6,peek=False)
 #Now feat_dict contains 4 feature arrays of your dataset
 #lets check the features right before the dense layer of the cnn
 print(feat_dict['features'])
-'''
+"""
 
 from __future__ import absolute_import
 from __future__ import division
@@ -159,7 +159,7 @@ def cnn_model_fn(features, labels, mode):
   )
 
 def extract(XY, batch_arg, steps_arg, Xtest=None, peek=False):
-  '''
+  """
   Inputs: (XY, batch_arg, steps_arg, Xtest=None, peek=False)
    XY        - entire training dataset
    batch_arg - size of batches
@@ -175,7 +175,7 @@ def extract(XY, batch_arg, steps_arg, Xtest=None, peek=False):
      'predictions' - has dimension (M,)
      'probabilities' - has dimension (M,2)
     this method also graphs the first image of the XY or X dataset
-  '''
+  """
   Y = np.asarray(XY[:,0],dtype=np.int32) #(M,)
   X = np.asarray(XY[:,1:],dtype=np.float32) #(M,7320)
   
