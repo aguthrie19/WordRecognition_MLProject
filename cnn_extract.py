@@ -13,23 +13,6 @@ feat_dict = cnn_extract.extract(XY,50,6,peek=False)
 #Now feat_dict contains 4 feature arrays of your dataset
 #lets check the features right before the dense layer of the cnn
 print(feat_dict['features'])
-
-##cnn_extract.extract##
-#Inputs: (XY, batch_arg, steps_arg, Xtest=None, peek=False)
-# XY        - entire training dataset
-# batch_arg - size of batches
-# steps_arg - number of batches to train over
-# Xtest     - dataset for which to extract features
-#             if ommited features will be extracted for the XY dataset
-# peek      - set to True to view probability vectors while training
-#Outputs: {'features':flat_r,'features_dense':dense_r,'predictions':pred_r,'probabilities': prob_r}
-# dictionary- of feature vectors for each entry in your XY or X dataset
-# 'features' - has dimension (M,29440)
-# 'features_dense' - has dimension (M,4096)
-# 'predictions' - has dimension (M,)
-# 'probabilities' - has dimension (M,2)
-# 
-# this method also graphs the first image of the XY or X dataset
 '''
 
 from __future__ import absolute_import
@@ -45,7 +28,7 @@ tf.logging.set_verbosity(tf.logging.INFO) #This way we can see the training info
 
 def cnn_model_fn(features, labels, mode):
   """
-  Custom model function for a CNN estimator object
+  A CNN model for a the extract method
   """
   
   #Input preprocessing layer
@@ -176,6 +159,23 @@ def cnn_model_fn(features, labels, mode):
   )
 
 def extract(XY, batch_arg, steps_arg, Xtest=None, peek=False):
+  '''
+  Inputs: (XY, batch_arg, steps_arg, Xtest=None, peek=False)
+   XY        - entire training dataset
+   batch_arg - size of batches
+   steps_arg - number of batches to train over
+   Xtest     - dataset for which to extract features
+               if ommited features will be extracted for the XY dataset
+   peek      - set to True to view probability vectors while training
+   
+   Outputs: {'features':flat_r,'features_dense':dense_r,'predictions':pred_r,'probabilities': prob_r}
+    dictionary- of feature vectors for each entry in your XY or X dataset
+     'features' - has dimension (M,29440)
+     'features_dense' - has dimension (M,4096)
+     'predictions' - has dimension (M,)
+     'probabilities' - has dimension (M,2)
+    this method also graphs the first image of the XY or X dataset
+  '''
   Y = np.asarray(XY[:,0],dtype=np.int32) #(M,)
   X = np.asarray(XY[:,1:],dtype=np.float32) #(M,7320)
   
