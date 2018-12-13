@@ -1,3 +1,37 @@
+'''
+USE:
+
+import numpy as np
+import cnn_extract
+
+XY = np.random.randint(255, size=(300, 7320))
+Y = np.random.choice((0,1),size=(300,1))
+XY = np.hstack((Y,XY))
+
+feat_dict = cnn_extract.extract(XY,50,6,peek=False)
+
+#Now feat_dict contains 4 feature arrays of your dataset
+#lets check the features right before the dense layer of the cnn
+print(feat_dict['features'])
+
+##cnn_extract.extract##
+#Inputs: (XY, batch_arg, steps_arg, Xtest=None, peek=False)
+# XY        - entire training dataset
+# batch_arg - size of batches
+# steps_arg - number of batches to train over
+# Xtest     - dataset for which to extract features
+#             if ommited features will be extracted for the XY dataset
+# peek      - set to True to view probability vectors while training
+#Outputs: {'features':flat_r,'features_dense':dense_r,'predictions':pred_r,'probabilities': prob_r}
+# dictionary- of feature vectors for each entry in your XY or X dataset
+# 'features' - has dimension (M,29440)
+# 'features_dense' - has dimension (M,4096)
+# 'predictions' - has dimension (M,)
+# 'probabilities' - has dimension (M,2)
+# 
+# this method also graphs the first image of the XY or X dataset
+'''
+
 from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
