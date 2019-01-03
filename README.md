@@ -1,2 +1,2 @@
 # triggerword
-Personal machine learning project while studying at UC San Diego
+Personal two person word recognition machine learning project while studying at UC San Diego
